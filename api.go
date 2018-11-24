@@ -2,6 +2,8 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
+	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 )
@@ -10,42 +12,36 @@ func getDocuments(w http.ResponseWriter, r *http.Request) {
 	//puntero lleva a la la variable
 	//referencia copia
 	var docs []Document
-	docs = getDocumentsTypeList(PathDirectory)
+	docs = getDocumentsTypeList()
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(docs)
 
 }
 
 func getDocumentsById(w http.ResponseWriter, r *http.Request) {
-	//puntero lleva a la la variable
-	//referencia copia
-	//var docs []Document
-
-	keys, ok := r.URL.Query()["ID"]
-
-	if !ok || len(keys[0]) < 1 {
-		log.Println("Url Param 'key' is missing")
-		json.NewEncoder(w).Encode("Url Param 'key' is missing")
-		return
+	keys := mux.Vars(r)
+	id := keys["ID"]
+	log.Println(keys)
+	doc, err := getDocumentByIdMd5(id)
+	if err == nil {
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(doc)
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(err)
 	}
-	//docs = getDocumentsTypeList(PathDirectory)
-	w.Header().Set("Content-Type", "application/json")
-	//json.NewEncoder(w).Encode(docs)
-	key := keys[0]
-	json.NewEncoder(w).Encode(key)
-	log.Println("Url Param 'key' is: " + string(key))
 }
 
-func getDocumentsTypeList(pathDocument string) []Document{
+func getDocumentsTypeList() []Document {
 	var docs []Document
 
-	var fileList = getListFiles(pathDocument)
+	var fileList = getListFiles(PathDirectory)
 	for _, value := range fileList {
 
-		absolutePath := pathDocument + value
+		absolutePath := PathDirectory + value
 		verifyValidPath(absolutePath)
 		hashMd5, err := hashFileMd5(absolutePath)
-		fileSize :=  getSizeFile(absolutePath)
+		fileSize := getSizeFile(absolutePath)
 
 		if err == nil {
 			docs = append(docs,
@@ -55,6 +51,14 @@ func getDocumentsTypeList(pathDocument string) []Document{
 	return docs
 }
 
-func getIdMd5FIle(id string){
+func getDocumentByIdMd5(id string) (Document, error) {
 
+	var docs []Document
+	docs = getDocumentsTypeList()
+	for _, doc := range docs {
+		if doc.ID == id {
+			return doc, nil
+		}
+	}
+	return Document{}, errors.New("No se encontro el ID ")
 }

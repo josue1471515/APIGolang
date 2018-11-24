@@ -36,13 +36,12 @@ func getListFiles(path string) []string {
 
 	for _, f := range location {
 		files = append(files, f.Name())
-		//fmt.Println(f.Name())
 	}
 	return files
 }
 
-func getSizeFile(path string)  int64{
-	file, err := os.Stat(path);
+func getSizeFile(path string) int64 {
+	file, err := os.Stat(path)
 	if err != nil {
 		log.Fatal(err)
 	}
