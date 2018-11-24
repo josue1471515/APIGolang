@@ -1,4 +1,4 @@
-package main
+package main_test
 
 import "testing"
 import "github.com/josue1471515/APIGolang"
