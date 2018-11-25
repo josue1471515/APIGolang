@@ -20,7 +20,7 @@ dep ensure -v
 go run main.go
 ```
 
-* Open an Internet Browser and go to [Localhost port 9000, route documents](http://localhost:9000/documents)
+* Open an Internet Browser and go to http://localhost:9000/documents
 
 ### Output
 
@@ -34,10 +34,11 @@ The server will respond with a dictionary of all files located in "files" folder
 ```
 
 *Also you can get a document
-Example:
-Making a GET request to [http://localhost:9000/documents/{ID}](http://localhost:9000/documents/b2a1f484840f512e93838cbd543acea5),
 
-he server will respond with {"ID":"b2a1f484840f512e93838cbd543acea5","Name":"fileA","Size":17}
+Example:
+Making a GET request to  http://localhost:9000/documents/{ID} : http://localhost:9000/documents/b2a1f484840f512e93838cbd543acea5,
+
+The server will respond with {"ID":"b2a1f484840f512e93838cbd543acea5","Name":"fileA","Size":17}
 
 ## Authors
 
