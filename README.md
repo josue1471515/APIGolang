@@ -37,7 +37,7 @@ The server will respond with a dictionary of all files located in "files" folder
 
 Example:
 Making a GET request to  http://localhost:9000/documents/{ID} : http://localhost:9000/documents/b2a1f484840f512e93838cbd543acea5,
-
+### Output
 The server will respond with {"ID":"b2a1f484840f512e93838cbd543acea5","Name":"fileA","Size":17}
 
 ## Authors
