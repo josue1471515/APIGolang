@@ -8,8 +8,6 @@ What things you need to install the software and how to install them.
 * Update dependencies
 ### Installing
 
-A step by step series of examples that tell you have to get a Development env. running.
-
 * Clone or copy the project to your src Golang project folder.
 * Inside the project folder, open a command prompt and type:
 ```
