@@ -10,7 +10,7 @@ What things you need to install the software and how to install them.
 
 A step by step series of examples that tell you have to get a Development env. running.
 
-* Clone or copy the project to your src Golang project folder. (Ex Windows. C:\\Users\YOUR USER\go\src)
+* Clone or copy the project to your src Golang project folder.
 * Inside the project folder, open a command prompt and type:
 ```
 dep ensure -v
@@ -44,6 +44,3 @@ The server will respond with {"ID":"b2a1f484840f512e93838cbd543acea5","Name":"fi
 
 * **Josue Ferrufino** - *Developer*
 
-## License
-
-This project is licensed under the Apache License - see the [LICENSE.md](LICENSE) file for details
