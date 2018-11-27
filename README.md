@@ -8,9 +8,7 @@ What things you need to install the software and how to install them.
 * Update dependencies
 ### Installing
 
-A step by step series of examples that tell you have to get a Development env. running.
-
-* Clone or copy the project to your src Golang project folder. (Ex Windows. C:\\Users\YOUR USER\go\src)
+* Clone or copy the project to your src Golang project folder.
 * Inside the project folder, open a command prompt and type:
 ```
 dep ensure -v
@@ -20,7 +18,7 @@ dep ensure -v
 go run main.go
 ```
 
-* Open an Internet Browser and go to [Localhost port 9000, route documents](http://localhost:9000/documents)
+* Open an Internet Browser and go to http://localhost:9000/documents
 
 ### Output
 
@@ -34,15 +32,13 @@ The server will respond with a dictionary of all files located in "files" folder
 ```
 
 *Also you can get a document
-Example:
-Making a GET request to [http://localhost:9000/documents/{ID}](http://localhost:9000/documents/b2a1f484840f512e93838cbd543acea5),
 
-he server will respond with {"ID":"b2a1f484840f512e93838cbd543acea5","Name":"fileA","Size":17}
+Example:
+Making a GET request to  http://localhost:9000/documents/{ID} : http://localhost:9000/documents/b2a1f484840f512e93838cbd543acea5,
+### Output
+The server will respond with {"ID":"b2a1f484840f512e93838cbd543acea5","Name":"fileA","Size":17}
 
 ## Authors
 
 * **Josue Ferrufino** - *Developer*
 
-## License
-
-This project is licensed under the Apache License - see the [LICENSE.md](LICENSE) file for details
