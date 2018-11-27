@@ -91,3 +91,28 @@ func createDocument(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(writer).Encode("Se guardo correctamente el archivo " + handler.Filename)
 }
+
+func deleteDocument(writer http.ResponseWriter, request *http.Request) {
+	keys := mux.Vars(request)
+	id := keys["ID"]
+	var docs []Document
+	docs = getDocumentsTypeList()
+	sw := false
+	docName := ""
+	for _, doc := range docs {
+		if doc.ID == id {
+			sw = true
+			docName = doc.Name
+			os.Remove("./files/" + doc.Name)
+		}
+	}
+	if !sw {
+		writer.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(writer).Encode("No se encontro el archivo ")
+	} else {
+		writer.WriteHeader(http.StatusForbidden)
+		writer.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(writer).Encode("Se Elimino correctamente el archivo " + docName)
+	}
+
+}
